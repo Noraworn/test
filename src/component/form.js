@@ -14,8 +14,8 @@ class form extends Component {
             firstName: '',
             lastName: '',
             date: new Date(),
-            birthday: '',
-            birthdayForm: '',
+            birthday: new Date().toLocaleDateString('en-GB', { year: "numeric", month: "2-digit", day: "2-digit" }),
+            birthdayForm: new Date().toLocaleDateString('en-US', { year: "numeric", month: "2-digit", day: "2-digit" }),
             nationality: 'Afghan',
             ID: null,
             gender: '',
@@ -68,6 +68,7 @@ class form extends Component {
     render() {
         const { title, nation, phone, gender } = this.props
         const { pageOfItems, page } = this.state
+        console.log(this.state.multiCheck, "check")
 
         return (
             <div className="container">
@@ -91,14 +92,14 @@ class form extends Component {
                                 First name:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control as='input' placeholder="First name" id="firstName" onChange={this.handleChange} required/>
+                                <Form.Control as='input' placeholder="First name" id="firstName" onChange={this.handleChange} required />
                             </Col>
 
                             <Form.Label column md="auto">
                                 Last name:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control as='input' placeholder="Last name" id="lastName" onChange={this.handleChange} required/>
+                                <Form.Control as='input' placeholder="Last name" id="lastName" onChange={this.handleChange} required />
                             </Col>
                         </Form.Group>
 
@@ -131,31 +132,31 @@ class form extends Component {
                                 CitizenID:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control type='number' id="ID" onChange={this.handleChange} required/>
+                                <Form.Control type='number' id="ID" onChange={this.handleChange} required />
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row}>
                             <Form.Label column md="auto">
                                 Gender:
-                                    </Form.Label>
-                            {gender && gender.map(gender => {
-                                return (
-                                    <Form.Check
-                                        inline
-                                        name="checked"
-                                        label={gender}
-                                        type="radio"
-                                        id="gender"
-                                        value={gender}
-                                        onClick={this.handleChange}
-                                        required
-                                    />
-                                )
-                            })}
-                        </Form.Group>
+                            </Form.Label>
+                            <Form.Label column md="auto">
+                                {gender && gender.map(gender => {
+                                    return (
+                                        <Form.Check
+                                            inline
+                                            name="checked"
+                                            label={gender}
+                                            type="radio"
+                                            id="gender"
+                                            value={gender}
+                                            onClick={this.handleChange}
+                                            required
+                                        />
+                                    )
+                                })}
+                            </Form.Label>
 
-                        <Form.Group as={Row}>
                             <Form.Label column md="auto">
                                 Mobile Phone:
                             </Form.Label>
@@ -169,7 +170,7 @@ class form extends Component {
                                 </Form.Control>
                             </Col>
                             <Col sm="2">
-                                <Form.Control type="number" id="mobilePhone" onChange={this.handleChange} required/>
+                                <Form.Control type="number" id="mobilePhone" onChange={this.handleChange} required />
                             </Col>
                         </Form.Group>
 
@@ -178,16 +179,13 @@ class form extends Component {
                                 Passport Number:
                             </Form.Label>
                             <Col sm="2">
-                                <Form.Control type="number" id="passportNo" onChange={this.handleChange} required/>
+                                <Form.Control type="number" id="passportNo" onChange={this.handleChange} required />
                             </Col>
-                        </Form.Group>
-
-                        <Form.Group as={Row}>
                             <Form.Label column md="auto">
                                 Expected Salary:
                             </Form.Label>
                             <Col sm="2">
-                                <Form.Control type="number" id="salary" onChange={this.handleChange} required/>
+                                <Form.Control type="number" id="salary" onChange={this.handleChange} required />
                             </Col>
                             <Form.Label column sm="7">
                                 THB
@@ -202,20 +200,7 @@ class form extends Component {
                     </Form>
 
                     <div>
-                        <div className="d-flex justify-content-between">
-                            <div>
-                                <Form.Check
-                                    inline
-                                    className="check"
-                                    label="select all"
-                                    type="checkbox"
-                                    id="checkAll"
-                                // value={index}
-                                // onClick={this.handleChange}
-                                />
-                                <Button variant="outline-warning" >Delete</Button>
-                            </div>
-
+                        <div className="d-flex justify-content-center">
                             <div>
                                 <Pagination items={this.state.data} onChangePage={this.onChangePage} />
                             </div>

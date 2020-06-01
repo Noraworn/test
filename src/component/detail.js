@@ -77,12 +77,12 @@ class Modal extends Component {
 
     render() {
         const { titleName, nation, gender, phone } = this.props
-        console.log(this.state)
-        console.log(this.props)
+        // console.log(this.state)
+        // console.log(this.props)
 
         return (
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog rec" role="document">
+                <div class="modal-dialog modal-dialog-centered rec" role="document">
                     <div class="modal-content">
 
                         <div class="modal-body">
@@ -107,14 +107,14 @@ class Modal extends Component {
                                             First name:
                                         </Form.Label>
                                         <Col sm>
-                                            <Form.Control as='input' value={this.state.firstName} id="firstName" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control as='input' value={this.state.firstName} id="firstName" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
 
                                         <Form.Label column md="auto">
                                             Last name:
                                         </Form.Label>
                                         <Col sm>
-                                            <Form.Control as='input' value={this.state.lastName} id="lastName" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control as='input' value={this.state.lastName} id="lastName" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
                                     </Form.Group>
 
@@ -147,7 +147,7 @@ class Modal extends Component {
                                             CitizenID:
                                         </Form.Label>
                                         <Col sm>
-                                            <Form.Control type='number' value={this.state.ID} id="ID" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control type='number' value={this.state.ID} id="ID" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
                                     </Form.Group>
 
@@ -155,22 +155,23 @@ class Modal extends Component {
                                         <Form.Label column md="auto">
                                             Gender:
                                         </Form.Label>
-                                        {gender && gender.map(gender => {
-                                            return (
-                                                <Form.Check
-                                                    inline
-                                                    name="checked"
-                                                    label={gender}
-                                                    type="radio"
-                                                    id="gender"
-                                                    value={gender}
-                                                    onClick={(e) => this.handleChange(e)}
-                                                />
-                                            )
-                                        })}
-                                    </Form.Group>
+                                        <Form.Label column md="auto">
+                                            {gender && gender.map(gender => {
+                                                return (
+                                                    <Form.Check
+                                                        inline
+                                                        name="checked"
+                                                        label={gender}
+                                                        type="radio"
+                                                        id="gender"
+                                                        value={gender}
+                                                        onClick={(e) => this.handleChange(e)}
+                                                        required
+                                                    />
+                                                )
+                                            })}
+                                        </Form.Label>
 
-                                    <Form.Group as={Row}>
                                         <Form.Label column md="auto">
                                             Mobile Phone:
                                         </Form.Label>
@@ -184,7 +185,7 @@ class Modal extends Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control type="number" value={this.state.mobilePhone} id="mobilePhone" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control type="number" value={this.state.mobilePhone} id="mobilePhone" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
                                     </Form.Group>
 
@@ -193,18 +194,16 @@ class Modal extends Component {
                                             Passport Number:
                                         </Form.Label>
                                         <Col sm="2">
-                                            <Form.Control type="number" value={this.state.passportNo} id="passportNo" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control type="number" value={this.state.passportNo} id="passportNo" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
-                                    </Form.Group>
 
-                                    <Form.Group as={Row}>
                                         <Form.Label column md="auto">
                                             Expected Salary:
                                         </Form.Label>
                                         <Col sm="2">
-                                            <Form.Control type="number" value={this.state.salary} id="salary" onChange={(e) => this.handleChange(e)} />
+                                            <Form.Control type="number" value={this.state.salary} id="salary" onChange={(e) => this.handleChange(e)} required />
                                         </Col>
-                                        <Form.Label column sm="7">
+                                        <Form.Label column sm="auto">
                                             THB
                                         </Form.Label>
                                     </Form.Group>

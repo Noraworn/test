@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Table } from 'react-bootstrap'
 import Modal from './detail'
-// import Edit from './edit'
 
 class list extends Component {
     constructor() {
@@ -33,23 +32,38 @@ class list extends Component {
     }
 
     multiCheck = (e) => {
-        // if (this.state.multiCheck.includes(e.target.value) == true) {
-        //     var array = this.state.multiCheck.splice(e.target.value, 1)
-        //     this.setState({
-        //         multiCheck: array
-        //     })
-        // } else {
-        //     this.setState({
-        //         multiCheck: [ ...this.state.multiCheck, e.target.value]
-        //     })
-        // }
+        var degree = e.target.value
+        if (this.state.multiCheck.includes(degree) == true) {
+            var array = this.state.multiCheck
+            var array = array.filter(value => value !== degree)
+            this.setState({
+                multiCheck: array
+            })
+        } else {
+            this.setState({
+                multiCheck: [...this.state.multiCheck, e.target.value]
+            })
+        }
+    }
+
+    multiDelete = (e) => {
+        var degree = this.state.multiCheck
+        var list = JSON.parse(localStorage.getItem('data'))
+        // console.log(degree)
+        degree.map(index => {
+            list.splice( parseInt(index), 1)
+            this.setState({
+                data: list
+            })
+        })
+        localStorage.setItem('data', JSON.stringify(list))
+        window.location.reload(false)
     }
 
     render() {
         const { list, page, data } = this.props;
         const { detail, detailNo, dateFormat } = this.state
-        const array = this.state.multiCheck
-        // alert(array)
+        // console.log(this.state.multiCheck)
 
         return (
             <div>
@@ -97,7 +111,20 @@ class list extends Component {
                         )
                     })}
                 </Table>
-                
+
+                <div>
+                    <Form.Check
+                        inline
+                        className="check"
+                        label="select all"
+                        type="checkbox"
+                        id="checkAll"
+                    // value={index}
+                    // onClick={this.handleChange}
+                    />
+                    <Button variant="outline-warning" onClick={() => this.multiDelete()}>Delete</Button>
+                </div>
+
                 <Modal
                     title={detail.title}
                     firstName={detail.firstName}
