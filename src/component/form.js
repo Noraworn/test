@@ -91,14 +91,14 @@ class form extends Component {
                                 First name:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control as='input' placeholder="First name" id="firstName" onChange={this.handleChange} />
+                                <Form.Control as='input' placeholder="First name" id="firstName" onChange={this.handleChange} required/>
                             </Col>
 
                             <Form.Label column md="auto">
                                 Last name:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control as='input' placeholder="Last name" id="lastName" onChange={this.handleChange} />
+                                <Form.Control as='input' placeholder="Last name" id="lastName" onChange={this.handleChange} required/>
                             </Col>
                         </Form.Group>
 
@@ -131,7 +131,7 @@ class form extends Component {
                                 CitizenID:
                             </Form.Label>
                             <Col sm>
-                                <Form.Control type='number' id="ID" onChange={this.handleChange} />
+                                <Form.Control type='number' id="ID" onChange={this.handleChange} required/>
                             </Col>
                         </Form.Group>
 
@@ -149,6 +149,7 @@ class form extends Component {
                                         id="gender"
                                         value={gender}
                                         onClick={this.handleChange}
+                                        required
                                     />
                                 )
                             })}
@@ -168,7 +169,7 @@ class form extends Component {
                                 </Form.Control>
                             </Col>
                             <Col sm="2">
-                                <Form.Control type="number" id="mobilePhone" onChange={this.handleChange} />
+                                <Form.Control type="number" id="mobilePhone" onChange={this.handleChange} required/>
                             </Col>
                         </Form.Group>
 
@@ -177,7 +178,7 @@ class form extends Component {
                                 Passport Number:
                             </Form.Label>
                             <Col sm="2">
-                                <Form.Control type="number" id="passportNo" onChange={this.handleChange} />
+                                <Form.Control type="number" id="passportNo" onChange={this.handleChange} required/>
                             </Col>
                         </Form.Group>
 
@@ -186,7 +187,7 @@ class form extends Component {
                                 Expected Salary:
                             </Form.Label>
                             <Col sm="2">
-                                <Form.Control type="number" id="salary" onChange={this.handleChange} />
+                                <Form.Control type="number" id="salary" onChange={this.handleChange} required/>
                             </Col>
                             <Form.Label column sm="7">
                                 THB

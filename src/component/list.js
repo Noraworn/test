@@ -49,7 +49,7 @@ class list extends Component {
         const { list, page, data } = this.props;
         const { detail, detailNo, dateFormat } = this.state
         const array = this.state.multiCheck
-        alert(array)
+        // alert(array)
 
         return (
             <div>
