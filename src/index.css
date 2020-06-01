@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+div.modal-dialog.rec {
+  border-radius: 2rem;
+  max-width: 80%;
+  /* background-color: white; */
+}
+
+.container {
+  padding-top: 30px;
+  max-width: 80%;
+}
